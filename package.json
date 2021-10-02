@@ -1,0 +1,9 @@
+{
+  "name": "docs",
+  "version": "1.0.0",
+  "dependencies": {
+  },
+  "scripts": {
+    "start": " http-server ./ -o -c-1"ddddddddddddddddddddddddd
+  }
+}

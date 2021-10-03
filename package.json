@@ -4,6 +4,6 @@
   "dependencies": {
   },
   "scripts": {
-    "start": " http-server ./ -o -c-1"ddddddddddddddddddddddddd
+    "start": " http-server ./ -o -c-1"
   }
 }

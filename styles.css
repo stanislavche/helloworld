@@ -1,0 +1,439 @@
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 34px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    color: #071821;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+body {
+    background: #071821;
+    font-family: 'VT323', monospace;
+}
+input[type=range] {
+    width: 100%;
+    margin: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: #071821;
+    border: 0;
+    border-radius: 25px;
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+    margin-top: -17px;
+    width: 15px;
+    height: 40px;
+    background: #071821;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #071821;
+}
+input[type=range]::-moz-range-track {
+    background: #071821;
+    border: 0;
+    border-radius: 25px;
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+    width: 15px;
+    height: 40px;
+    background: #071821;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 18px 0;
+    color: transparent;
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+}
+input[type=range]::-ms-fill-lower {
+    background: #071821;
+    border: 0;
+    border-radius: 50px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #071821;
+    border: 0;
+    border-radius: 50px;
+}
+input[type=range]::-ms-thumb {
+    width: 15px;
+    height: 40px;
+    background: #071821;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #071821;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #071821;
+}
+@supports (-ms-ime-align:auto) {
+    input[type=range] {
+        margin: 0;
+    }
+}
+.screen{
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 760px;
+    position: relative;
+}
+canvas {
+    position: absolute;
+    top: 12%;
+    left: 18%;
+    width: 64%;
+    height: 76%;
+    border: none;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    margin: 0 auto;
+    display: block;
+    z-index: 2;
+}
+.controls .btn-direction {
+    position: absolute;
+    left: 3%;
+    top: 26px;
+}
+.controls .btn-direction:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    left: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: #353535;
+    border-radius: 100%;
+}
+.controls .btn-direction .vertical,
+.controls .btn-direction .horizontal {
+    position: absolute;
+    left: 30px;
+    width: 30px;
+    height: 90px;
+    background: #444;
+    border-radius: 5px;
+}
+.controls .btn-direction .vertical:before,
+.controls .btn-direction .horizontal:before {
+    content: "";
+    position: relative;
+    top: 99px;
+    left: 8px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #dedede;
+}
+.controls .btn-direction .vertical:after,
+.controls .btn-direction .horizontal:after {
+    content: "";
+    position: relative;
+    top: -27px;
+    left: -5.6px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #dedede;
+}
+.controls .btn-direction .horizontal {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+.controls .btn-AB {
+    position: absolute;
+    top: 40px;
+    right: 3%;
+    width: 130px;
+    height: 60px;
+    background: #dfdfdf;
+    border-radius: 30px;
+    -webkit-transform: rotate(-25deg);
+}
+.controls .btn-AB:after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 44px;
+    height: 44px;
+    background: #a93671;
+    box-shadow: 68px 0 #a93671;
+    border-radius: 100%;
+    -webkit-transform: rotate(180deg);
+}
+.btn-start-select {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    margin-left: -72px;
+    height: 12px;
+    width: 60px;
+    background-color: #999;
+    border-radius: 10px;
+    -webkit-transform: rotate(-25deg);
+    box-shadow: 0 0 0 5px #dfdfdf;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-start-select:active {
+    background-color: #555;
+}
+
+.imageGB{
+    display: block;
+    width: 100%;
+    position: relative;
+}
+#fullscreenMode {
+    font-size: 50px;
+    line-height: 60px;
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    color: #071821;
+    z-index: 3;
+    padding: 0px;
+    font-weight: 700;
+}
+#volume {
+    transform: rotate(
+            270deg);
+    position: absolute;
+    top: 53.5%;
+    right: -13%;
+    width: 51%;
+    z-index: 3;
+}
+#switch-light {
+    position: absolute;
+    top: 35.6%;
+    left: 6%;
+    width: 3.2%;
+    height: 4%;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    background-color: rgba(0,0,0,1);
+    border: 2px solid #071821;
+}
+#switch-light.active {
+    background-color: rgba(255,69,0,0.5);
+}
+#palette {
+    position: absolute;
+    bottom: 6%;
+    left: 24%;
+    width: 58%;
+    z-index: 3;
+}
+.controls{
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    display: block;
+    margin: 0 auto;
+}
+
+#start {
+    margin-left: 20px;
+}
+#preloader {
+    display: block;
+    color: #071821;
+    font-size: 70px;
+    text-align: center;
+    z-index: 2;
+    position: absolute;
+    top: 34.2%;
+    width: 64%;
+    left: 18%;
+}
+.btn {
+    position: absolute;
+    width: 42px;
+    height: 44px;
+    display: block;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.0);
+    transition: background-color 0.2s;
+    z-index: 2;
+    outline: none;
+    color: #fff;
+    padding: 13px 0;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.btn_A {
+    top: 8px;
+    left: 10px;
+}
+.btn_B {
+    top: 8px;
+    right: 10px;
+}
+.arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    display: block;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0.0);
+    transition: background-color 0.2s;
+    z-index: 2;
+    outline: none;
+    cursor: pointer;
+}
+.arrow_left,
+.arrow_down {
+    bottom: 0;
+    left: 0;
+}
+.arrow_right,
+.arrow_up {
+    top: 0;
+    left: 0;
+}
+.arrow:active,
+.btn:active {
+    background-color: rgba(0,0,0,0.4);
+}
+.palette-icon {
+    position: absolute;
+    display: block;
+    bottom: 4%;
+    left: 17.6%;
+}
+.volume-icon {
+    position: absolute;
+    display: block;
+    top: 10%;
+    font-size: 48px;
+    left: 85.75%;
+}
+@media only screen and (max-width: 560px) {
+    .btn-start-select {
+        top: 140px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        margin-top: -12px;
+        height: 30px;
+    }
+    input[type=range]::-moz-range-thumb {
+        margin-top: -12px;
+        height: 30px;
+    }
+    input[type=range]::-ms-thumb {
+        margin-top: -12px;
+        height: 30px;
+    }
+    #volume {
+        right: -13%;
+    }
+    #fullscreenMode {
+        left: 2%;
+    }
+    #palette {
+        bottom: 6%;
+    }
+    #preloader {
+        font-size: 30px;
+    }
+    .volume-icon {
+        font-size: 32px;
+    }
+    .palette-icon {
+        font-size: 26px;
+        bottom: 3%;
+    }
+    .controls .btn-AB {
+        right: 0;
+    }
+}
+@media only screen and (max-width: 470px) {
+    input[type=range]::-webkit-slider-thumb {
+        margin-top: -8px;
+        height: 22px;
+    }
+    input[type=range]::-moz-range-thumb {
+        margin-top: -8px;
+        height: 22px;
+    }
+    input[type=range]::-ms-thumb {
+        margin-top: -8px;
+        height: 22px;
+    }
+    #volume {
+        right: -14%;
+    }
+    #palette {
+        left: 26%;
+        width: 56%;
+        bottom: 5.3%;
+    }
+    .palette-icon {
+        font-size: 20px;
+    }
+    .volume-icon {
+        font-size: 26px;
+    }
+    .btn-start-select {
+        top: 156px;
+    }
+}

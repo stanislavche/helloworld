@@ -1,333 +1,40 @@
 <!DOCTYPE html>
 <head>
   <title>Hello World</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      user-select: none;
-    }
-    body {
-      background: #071821;
-    }
-    input[type=range] {
-      width: 100%;
-      margin: 0;
-      background-color: transparent;
-      -webkit-appearance: none;
-    }
-    input[type=range]:focus {
-      outline: none;
-    }
-    input[type=range]::-webkit-slider-runnable-track {
-      background: #071821;
-      border: 0;
-      border-radius: 25px;
-      width: 100%;
-      height: 6px;
-      cursor: pointer;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      margin-top: -17px;
-      width: 15px;
-      height: 40px;
-      background: #071821;
-      border: 0;
-      border-radius: 4px;
-      cursor: pointer;
-      -webkit-appearance: none;
-    }
-    input[type=range]:focus::-webkit-slider-runnable-track {
-      background: #071821;
-    }
-    input[type=range]::-moz-range-track {
-      background: #071821;
-      border: 0;
-      border-radius: 25px;
-      width: 100%;
-      height: 6px;
-      cursor: pointer;
-    }
-    input[type=range]::-moz-range-thumb {
-      width: 15px;
-      height: 40px;
-      background: #071821;
-      border: 0;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    input[type=range]::-ms-track {
-      background: transparent;
-      border-color: transparent;
-      border-width: 18px 0;
-      color: transparent;
-      width: 100%;
-      height: 6px;
-      cursor: pointer;
-    }
-    input[type=range]::-ms-fill-lower {
-      background: #071821;
-      border: 0;
-      border-radius: 50px;
-    }
-    input[type=range]::-ms-fill-upper {
-      background: #071821;
-      border: 0;
-      border-radius: 50px;
-    }
-    input[type=range]::-ms-thumb {
-      width: 15px;
-      height: 40px;
-      background: #071821;
-      border: 0;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 0px;
-      /*Needed to keep the Edge thumb centred*/
-    }
-    input[type=range]:focus::-ms-fill-lower {
-      background: #071821;
-    }
-    input[type=range]:focus::-ms-fill-upper {
-      background: #071821;
-    }
-    @supports (-ms-ime-align:auto) {
-      input[type=range] {
-        margin: 0;
-      }
-    }
-    .screen{
-      display: block;
-      box-sizing: border-box;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 760px;
-      position: relative;
-    }
-    canvas {
-      position: absolute;
-      top: 12%;
-      left: 18%;
-      width: 64%;
-      height: 76%;
-      border: none;
-      image-rendering: pixelated;
-      image-rendering: -moz-crisp-edges;
-      margin: 0 auto;
-      display: block;
-      z-index: 2;
-    }
-    .controls .btn-direction {
-      position: absolute;
-      left: 3%;
-      top: 26px;
-    }
-    .controls .btn-direction:before {
-      content: "";
-      position: absolute;
-      z-index: 1;
-      top: 30px;
-      left: 30px;
-      width: 30px;
-      height: 30px;
-      background-color: #353535;
-      border-radius: 100%;
-    }
-    .controls .btn-direction .vertical,
-    .controls .btn-direction .horizontal {
-      position: absolute;
-      left: 30px;
-      width: 30px;
-      height: 90px;
-      background: #444;
-      border-radius: 5px;
-    }
-    .controls .btn-direction .vertical:before,
-    .controls .btn-direction .horizontal:before {
-      content: "";
-      position: relative;
-      top: 99px;
-      left: 8px;
-      width: 0;
-      height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-top: 7px solid #dedede;
-    }
-    .controls .btn-direction .vertical:after,
-    .controls .btn-direction .horizontal:after {
-      content: "";
-      position: relative;
-      top: -27px;
-      left: -5.6px;
-      width: 0;
-      height: 0;
-      border-left: 7px solid transparent;
-      border-right: 7px solid transparent;
-      border-bottom: 7px solid #dedede;
-    }
-    .controls .btn-direction .horizontal {
-      -webkit-transform: rotate(90deg);
-      -moz-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-      -o-transform: rotate(90deg);
-      transform: rotate(90deg);
-    }
-    .controls .btn-AB {
-      position: absolute;
-      top: 40px;
-      right: 3%;
-      width: 130px;
-      height: 60px;
-      background: #dfdfdf;
-      border-radius: 30px;
-      -webkit-transform: rotate(-25deg);
-    }
-    .controls .btn-AB:after {
-      content: "";
-      position: absolute;
-      top: 8px;
-      right: 9px;
-      width: 44px;
-      height: 44px;
-      background: #a93671;
-      box-shadow: 68px 0 #a93671;
-      border-radius: 100%;
-      -webkit-transform: rotate(180deg);
-    }
-    .controls .btn-start-select {
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      margin-left: -72px;
-      height: 12px;
-      width: 60px;
-      background: #999;
-      border-radius: 10px;
-      -webkit-transform: rotate(-25deg);
-      box-shadow: 0 0 0 5px #dfdfdf;
-    }
-    .imageGB{
-      display: block;
-      width: 100%;
-      position: relative;
-    }
-    #fullscreenMode {
-      font-size: 50px;
-      line-height: 60px;
-      cursor: pointer;
-      position: absolute;
-      top: 10%;
-      left: 5%;
-      color: #071821;
-      z-index: 3;
-      padding: 0px;
-      font-weight: 700;
-    }
-    #volume {
-      transform: rotate(
-              270deg);
-      position: absolute;
-      top: 49.5%;
-      right: -16%;
-      width: 58%;
-      z-index: 3;
-    }
-    #palette {
-      position: absolute;
-      bottom: 6%;
-      left: 18%;
-      width: 64%;
-      z-index: 3;
-    }
-    .controls{
-      position: relative;
-      width: 100%;
-      max-width: 760px;
-      display: block;
-      margin: 0 auto;
-    }
-    .controls * {
-      cursor: pointer;
-    }
-    #start {
-      margin-left: 20px;
-    }
-    #preloader {
-      display: block;
-      color: black;
-      font-size: 50px;
-      text-align: center;
-      z-index: 2;
-      position: absolute;
-      top: 34.2%;
-      width: 64%;
-      left: 18%;
-      font-family: fantasy;
-    }
-    @media only screen and (max-width: 560px) {
-      .controls .btn-start-select {
-        top: 140px;
-      }
-      input[type=range]::-webkit-slider-thumb {
-        margin-top: -12px;
-        height: 30px;
-      }
-      input[type=range]::-moz-range-thumb {
-        margin-top: -12px;
-        height: 30px;
-      }
-      input[type=range]::-ms-thumb {
-        margin-top: -12px;
-        height: 30px;
-      }
-      #volume {
-        right: -20%;
-      }
-      #fullscreenMode {
-        left: 2%;
-      }
-      #palette {
-        bottom: 6%;
-      }
-      #preloader {
-        font-size: 30px;
-      }
-    }
-    @media only screen and (max-width: 470px) {
-      input[type=range]::-webkit-slider-thumb {
-        margin-top: -8px;
-        height: 22px;
-      }
-      input[type=range]::-moz-range-thumb {
-        margin-top: -8px;
-        height: 22px;
-      }
-      input[type=range]::-ms-thumb {
-        margin-top: -8px;
-        height: 22px;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="screen">
     <img class="imageGB" src="./img/screen.png" alt="screen">
+    <span id="switch-light"></span>
     <span id="preloader">Click any button</span>
     <canvas width="160" height="144"></canvas>
-<!--    <span id="fullscreenMode">&#x26F6;</span>-->
+    <span class="palette-icon material-icons">&#xE40a;</span>
+    <span class="volume-icon material-icons">&#xEf49;</span>
     <input type="range" id="volume" name="palette" min="0" max="1" value="0.8" step="0.1">
     <input type="range"  id="palette" name="palette" min="0" max="82" value="0" step="1">
   </div>
   <div class="controls" id="controls">
     <div class="btn-direction">
-      <div class="vertical"></div>
-      <div class="horizontal"></div>
+      <div class="vertical">
+        <span class="arrow arrow_up" data-bind="_set_joyp_up"></span>
+        <span class="arrow arrow_down" data-bind="_set_joyp_down"></span>
+      </div>
+      <div class="horizontal">
+        <span class="arrow arrow_left" data-bind="_set_joyp_left"></span>
+        <span class="arrow arrow_right" data-bind="_set_joyp_right"></span>
+      </div>
     </div>
-    <div class="btn-AB"></div>
-    <div class="btn-start-select" id="select"></div>
-    <div class="btn-start-select" id="start"></div>
+    <div class="btn-AB">
+      <span class="btn btn_A" data-bind="_set_joyp_A">A</span>
+      <span class="btn btn_B" data-bind="_set_joyp_B">B</span>
+    </div>
+    <div class="btn-start-select" id="select" data-bind="_set_joyp_select"></div>
+    <div class="btn-start-select" id="start" data-bind="_set_joyp_start"></div>
   </div>
   <script src="binjgb.js"></script>
   <script src="simple.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap&family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </body>

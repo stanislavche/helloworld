@@ -607,15 +607,18 @@ const keup = new KeyboardEvent('keyup', {
   bubbles: true, cancelable: true, keyCode: 13, isTrusted: true, key: "Enter", code: "Enter"
 });
 
-control.addEventListener('click', function() {
-  if (emulator) {
-    emulator.module._set_joyp_start(emulator.e, true);
+control.addEventListener('click', function(event) {
+  event.preventDefault();
+  if (emulator && event.target?.dataset?.bind) {
+    console.log(event.target?.dataset?.bind);
+    emulator.module[event.target?.dataset?.bind](emulator.e, true);
     setTimeout(() => {
-      emulator.module._set_joyp_start(emulator.e, false);
-    }, 500);
-  } else {
+      emulator.module[event.target?.dataset?.bind](emulator.e, false);
+    }, 50);
+  } else if (!emulator){
     initEmulator();
   }
+  return;
 });
 
 window.addEventListener('touchstart', initEmulator);
@@ -627,8 +630,10 @@ function initEmulator() {
   window.removeEventListener('keydown', initEmulator);
   window.removeEventListener('touchstart', initEmulator);
   window.removeEventListener('click', initEmulator);
-  let preloader = document.getElementById('preloader');
+  const preloader = document.getElementById('preloader');
+  const light = document.getElementById('switch-light');
   preloader.parentNode.removeChild(preloader);
+  light.classList.add('active');
   (async function go() {
     let response = await fetch('./rom/game.gb');
     let romBuffer = await response.arrayBuffer();

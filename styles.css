@@ -367,6 +367,41 @@ canvas {
     font-size: 48px;
     left: 85.75%;
 }
+.glass {
+    display: block;
+    width: 100%;
+    position: relative;
+    height: 0;
+    padding-bottom: 75%;
+    background: #455c71;
+    border-radius: 4% 4% 14% 4%;
+    overflow: hidden;
+    border: 8px solid #060506;
+    box-sizing: border-box;
+}
+.glass:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 11%;
+    left: 17.5%;
+    width: 65.2%;
+    height: 0;
+    padding-bottom: 59.8%;
+    background: #675300;
+}
+.glass__title{
+    width: 90%;
+    display: block;
+    position: absolute;
+    top: 4%;
+    left: 5%;
+    font-size: 10px;
+    color: #bbb;
+    text-align: center;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+}
 @media only screen and (max-width: 560px) {
     .btn-start-select {
         top: 140px;

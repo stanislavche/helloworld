@@ -31,6 +31,7 @@
 body {
     background: #071821;
     font-family: 'VT323', monospace;
+    overflow: hidden;
 }
 input[type=range] {
     width: 100%;
